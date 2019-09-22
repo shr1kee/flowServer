@@ -29,8 +29,9 @@ app.post('/dialogflow', express.json(), (req, res)=> {
 
     function test(agent) {
        // agent.add('welcome to my server!!!! ^_^');
-        request('http://api.kinopoisk.cf/getTodayFilms', null, function(error, response, body) {
-            agent.add(JSON.stringify(body));
+        request('https://api.themoviedb.org/3/trending/all/week?api_key=0f0f4e4397fdd57b3f38401d074f4dff', null, function(error, response, body) {
+            var res = body['results'][0].title
+            agent.add(res);
         });
 
     }
