@@ -13,7 +13,8 @@
     "express": "~4.16.1",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.2.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "request": "latest"
   },
   "devDependencies": {
     "request": "^2.88.0"
