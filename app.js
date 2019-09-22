@@ -29,9 +29,9 @@ app.post('/dialogflow', express.json(), (req, res)=> {
 
     function test(agent) {
        // agent.add('welcome to my server!!!! ^_^');
-        request('https://api.themoviedb.org/3/trending/all/week?api_key=0f0f4e4397fdd57b3f38401d074f4dff', null, function(error, response, body) {
-            var res = body['results'][0].title
-            agent.add(res);
+        request('https://api.themoviedb.org/3/trending/all/week?api_key=0f0f4e4397fdd57b3f38401d074f4dff', {json: true}, function(error, response, body) {
+            var result = body['results'][0].title
+            agent.add(result);
         });
 
     }
@@ -41,6 +41,7 @@ app.post('/dialogflow', express.json(), (req, res)=> {
     agent.handleRequest(intentMap);
 
 });
+
 app.listen(1337, function () {
     console.log('server was started');
 });
