@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var request = require('request')
 var functions = require('firebase-functions')
 var {WebhookClient} = require('dialogflow-fulfillment')
 var {card, Suggestion } = require('dialogflow-fulfillment')
@@ -27,7 +28,11 @@ app.post('/dialogflow', express.json(), (req, res)=> {
     const agent = new WebhookClient({request: req, response:res});
 
     function test(agent) {
-        agent.add('welcome to my server!!!! ^_^');
+       // agent.add('welcome to my server!!!! ^_^');
+        request('http://api.kinopoisk.cf/getTodayFilms', null, function(error, response, body) {
+            agent.add(JSON.stringify(body));
+        });
+
     }
 
     let intentMap = new Map();
