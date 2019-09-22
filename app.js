@@ -31,6 +31,8 @@ app.post('/dialogflow', express.json(), (req, res)=> {
        // agent.add('welcome to my server!!!! ^_^');
         return request.get('https://api.themoviedb.org/3/trending/all/week?api_key=0f0f4e4397fdd57b3f38401d074f4dff')
             .then(body => {
+                console.log(body)
+                body = JSON.parse(body)
                 return agent.add(body['results'][0].title);
         });
         // request(, {json: true}, function(error, response, body) {
